@@ -63,15 +63,13 @@ public class Day02 {
             var blueContraint = 14;
             var result = 0;
             for(var game: games){
-                System.out.println("GAME " + game);
-                System.out.println("SIEZE " + game.getGames().size());
                 var possibleGames = game.getGames().stream().filter(g -> g.getBlue() > blueContraint || g.getRed() > redContraint || g.getGreen() > greenContraint).toList();
                 if (possibleGames.isEmpty()){
                     result += game.id;
                 }
             }
 
-            System.out.println("result " + result);
+            System.out.println("Part 1: " + result);
 
             var result2 =  0;
             for(var game: games){
@@ -82,12 +80,7 @@ public class Day02 {
 
 
             }
-
-            System.out.println("result2: " + result2);
-
-
-
-
+            System.out.println("Part 2: " + result2);
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
