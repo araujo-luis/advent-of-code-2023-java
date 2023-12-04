@@ -30,7 +30,6 @@ public class Day04 {
                 var myNumbers = Arrays.stream((game[1].split(" "))).filter(n -> !n.isEmpty()).map(Integer::parseInt).toList();
                 var matches = 0;
                 copies.set(i, copies.get(i) + 1);
-
                 for (Integer num : myNumbers) {
                     if (winningNumbers.contains(num)) {
                         matches++;
