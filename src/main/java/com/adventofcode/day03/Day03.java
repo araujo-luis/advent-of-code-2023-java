@@ -47,18 +47,14 @@ public class Day03 {
                     if (isNumeric(puzzle.get(i).get(j))) {
                         number += puzzle.get(i).get(j);
                         times++;
-
                         if (j + 1 < puzzle.get(i).size() && isNumeric(puzzle.get(i).get(j + 1))) {
                             number += puzzle.get(i).get(j + 1);
                             times++;
-
                             if (j + 2 < puzzle.get(i).size() && isNumeric(puzzle.get(i).get(j + 2))) {
                                 number += puzzle.get(i).get(j + 2);
                                 times++;
                             }
                         }
-
-
                         for (int k = 0; k < times + 2; k++) {
                             // UP
                             if (i - 1 >= 0 && (i - 1) <= puzzle.get(i).size() && (j - 1 + k) < puzzle.get(i).size() && j - 1 + k >= 0) {
@@ -75,15 +71,12 @@ public class Day03 {
                                 }
                             }
                         }
-
                         // RIGHT
                         if ((j + times) < puzzle.get(i).size()) {
                             if (isSpecialCharacter(puzzle.get(i).get(j + times))) {
                                 isValid = true;
                             }
                         }
-
-
                         // LEFT
                         if (j - 1 >= 0) {
                             if (isSpecialCharacter(puzzle.get(i).get(j - 1))) {
@@ -98,8 +91,6 @@ public class Day03 {
                             puzzle.get(i).set(j + k, number);
                         }
                         j = j + times;
-
-
                     }
 
                 }
@@ -120,8 +111,6 @@ public class Day03 {
                 IOException e) {
             System.out.println(e.getMessage());
         }
-
-
     }
 
     public static int getReuslt2(List<List<String>> puzzle) {
