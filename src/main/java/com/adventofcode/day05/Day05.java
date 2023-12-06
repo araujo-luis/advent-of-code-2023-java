@@ -127,9 +127,9 @@ public class Day05 {
                 //System.out.println("J: "+ seedStart + " " + seedEnd);
 
                 for (long j = seedStart; j < seedStart + seedEnd; j++) {
-                    if (lowest2 < result) {
+                    if (lowest2 <= j) {
                         System.out.println("SKIPPING " +j);
-                        break;
+                        continue;
                     }
                     System.out.println("CHELCKING: "+ j);
                     result = getLocation(j, seedToSoil);
@@ -146,7 +146,7 @@ public class Day05 {
                     result = getLocation(result, temperatureToHumidity);
                     //System.out.println("HUMIDITY: " + result);
                     result = getLocation(result, humidityToLocation);
-                    //System.out.println("LOCATION: " + result);
+                    System.out.println("LOCATION: " + result);
                     if (result < lowest2) {
                         lowest2 = result;
                         System.out.println("LOWEST " + lowest2);
@@ -170,7 +170,7 @@ public class Day05 {
  */
             var result = 0L;
             System.out.println("------------------");
-            result = getLocation(lowest2, seedToSoil);
+            result = getLocation(82L, seedToSoil);
             //result = getSeedToSoil(seed, seedToSoil);
             System.out.println("SOIL: " + result);
             result = getLocation(result, soilToFertilizer);
