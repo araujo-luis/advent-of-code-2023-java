@@ -26,12 +26,8 @@ public class Day07 {
                 var card2 = new Card(cardString[0], Integer.parseInt(cardString[1]), true);
                 cards.add(card);
                 cards2.add(card2);
-
             }
-
             // System.out.println("RESULT " + cards);
-
-
             cards.sort((a, b) -> {
                 if (a.type.getValue() == b.type.getValue()) {
                     for (int i = 0; i < a.handList.size(); i++) {
