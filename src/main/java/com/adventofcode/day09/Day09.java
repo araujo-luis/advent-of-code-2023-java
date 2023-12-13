@@ -31,8 +31,8 @@ public class Day09 {
             var result2 = 0;
 
             for (List<Integer> currentList : lists) {
-                result += calculate(currentList) + currentList.get(currentList.size() - 1);
-                result2 += currentList.get(0) - calculate2(currentList);
+                result += calculate(currentList, false) + currentList.get(currentList.size() - 1);
+                result2 += currentList.get(0) - calculate(currentList, true);
             }
 
             System.out.println("RESULT: " + result);
@@ -44,33 +44,27 @@ public class Day09 {
         }
     }
 
-    private static int calculate(List<Integer> currentList) {
+    private static int calculate(List<Integer> currentList, boolean part2) {
         var array = new ArrayList<Integer>();
         for (int i = 0; i < currentList.size() - 1; i++) {
             array.add(currentList.get(i + 1) - currentList.get(i));
         }
         var hash = new HashSet<>(array);
         if (hash.size() == 1) {
-            return array.get(array.size() - 1);
+            if (part2) {
+                return array.get(0);
+            } else {
+                return array.get(array.size() - 1);
+            }
         } else {
-            return array.get(array.size() - 1) + calculate(array.stream().toList());
+            if (part2) {
+                return array.get(0) - calculate(array.stream().toList(), part2);
+            } else {
+                return array.get(array.size() - 1) + calculate(array.stream().toList(), part2);
+            }
+
         }
 
     }
 
-    private static int calculate2(List<Integer> currentList) {
-        var array = new ArrayList<Integer>();
-        for (int i = 0; i < currentList.size() - 1; i++) {
-            array.add(currentList.get(i + 1) - currentList.get(i));
-        }
-        var hash = new HashSet<>(array);
-
-        if (hash.size() == 1) {
-
-            return array.get(0);
-        } else {
-            return array.get(0) - calculate2(array.stream().toList());
-        }
-
-    }
 }
